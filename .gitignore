@@ -1,0 +1,13 @@
+# SBT Build artifacts
+project/project/
+target/
+.ivy/
+.sbt/
+
+# IDE Artifacts
+/.idea/
+
+# Runtime Artifacts
+logs/
+application-log-*.gz
+data/
