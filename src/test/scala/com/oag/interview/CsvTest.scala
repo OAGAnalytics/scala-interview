@@ -67,11 +67,13 @@ class CsvTest extends FlatSpec with Matchers {
     headers(3) should be("cum_water_720")
   }
 
-  // Add a test that calls your new method for Oil and Gas and verifies appropriate output
+  // TODO: Add a test that calls your new method for Oil and Gas and verifies appropriate output
 
-  // Add a test that calls your new method for Gas and Water and verifies appropriate output
+  // TODO: Add a test that calls your new method for Oil and Water and verifies appropriate output
 
-  // Add a test that calls your new method for Oil, Gas, and Water and verifies appropriate output
+  // TODO: Add a test that calls your new method for Gas and Water and verifies appropriate output
+
+  // TODO: Add a test that calls your new method for Oil, Gas, and Water and verifies appropriate output
 
   "cleanup" should "happen" in {
     managed(Files.list(dataDir)) apply { stream =>

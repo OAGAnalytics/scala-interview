@@ -12,9 +12,17 @@ import scala.util.Try
   * The goal of this class is to transform a daily production log into a production-by-operated-data summary.
   *
   * That is, the daily production log has one row of production data per calendar day per well.  A by-operated-day
-  * summary contains one row per well with columns for various time interval production totals (30, 60, 90, etc days).
+  * summary contains one row per well with columns for various time interval production totals (180, 360, 720, etc
+  * days). Note that the output considers *producing* days, not calendar days.  So a calendar day with 0 production
+  * would not count towards the 180 days (for example).  To illustrate, in the following data set there are 3 calendar
+  * days, but only 2 producing days for oil (1 for gas, and 3 for water):
   *
-  * For example, the column headers for an example by-operated-day CSV might be:
+  * date, oil, gas, water
+  * 2017-01-01, 25, 0, 5
+  * 2017-01-02, 0, 7, 3
+  * 2017-01-03, 31, 0, 12
+  *
+  * The column headers for an example oil-by-operated-day CSV might be:
   *
   * wellId, cum_oil_180, cum_oil_360, cum_oil_720
   *
@@ -22,7 +30,7 @@ import scala.util.Try
   * gas, or water depending on which method you call.
   *
   * The goal of the exercise is to add a method that can output by-operated-day summaries for multiple production types
-  * in a single file.  So the headers might look like this for oil, gas, and water all included (order is irrelevant):
+  * in a single file.  So the headers might look like this for oil, gas, and water all included.
   *
   * wellId, cum_oil_180, cum_oil_360, cum_oil_720, cum_gas_180, cum_gas_360, cum_gas_720, cum_water_180, cum_water_360, cum_water_720
   */

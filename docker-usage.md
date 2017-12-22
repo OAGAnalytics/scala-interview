@@ -41,6 +41,12 @@ $ ./sbtd build
 $ ./sbtd test
 ```
 
+#### Clean
+
+```bash
+$ ./sbtd clean
+```
+
 #### Interactive SBT Console
 
 ```bash
