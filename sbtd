@@ -13,4 +13,4 @@ IMAGE="1science/sbt:0.13-oracle-jdk-8"
 docker run --rm -it \
     -v ${DIR}:/app \
     --name sbtd \
-    ${IMAGE} sbt -sbt-dir /app/.sbt -ivy /app/ivy "$@"
+    ${IMAGE} sbt -sbt-dir /app/.sbt -ivy /app/.ivy "$@"

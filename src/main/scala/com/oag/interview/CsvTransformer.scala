@@ -80,7 +80,7 @@ class CsvTransformer(inputFile: Path) {
     val headers = inputFileHeaders
 
     val wellIdIndex = this.wellIdIndex(headers)
-    val gasIndex = this.gasIndex(headers)
+    val gasIndex = this.oilIndex(headers)
 
     dailyToOperatedDay(outputFile,
                        "gas",
