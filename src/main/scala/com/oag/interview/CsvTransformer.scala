@@ -12,11 +12,36 @@ import scala.util.Try
   * The goal of this class is to transform a daily production log into a production-by-operated-data summary 
   * (aka "production summary").
   *
-  * The daily production log has one row of production data per calendar day per well.  A production summary contains 
-  * one row per well with columns for various time interval production totals (180, 360, 720, etc days). Note that the 
-  * output considers *producing* days, not calendar days.  So a calendar day with 0 production would not count towards 
-  * the 180 days (for example).  To illustrate, in the following data set (some columns excluded for simplicity) there 
-  * are 3 calendar days, but only 2 producing days for oil (1 for gas, and 3 for water):
+  * The daily production log is created for you by CsvCreator and is the input for the exercise.  This file has one 
+  * row of production data per calendar day per well. So, for example, it may have a structure like this:
+  *
+  * wellId,field,date,oil,gas,water,flare,choke,line_press
+  * 11111111111111, "Pine", 2017-01-01, 25, 0, 5, 2, 17, 417
+  * 11111111111111, "Pine", 2017-01-02, 0, 7, 3, 0, 14, 225
+  * 11111111111111, "Pine", 2017-01-03, 31, 0, 12, 1, 21, 340
+  * 11111111111112, "Tioga", 2017-01-01, 90, 5, 22, 0, 12, 375
+  * 11111111111112, "Tioga", 2017-01-02, 77, 10, 17, 0, 12, 350
+  * 11111111111112, "Tioga", 2017-01-03, 85, 8, 0, 0, 12, 344
+  *
+  * In this example, well "11111111111111" shows production information for three days.  On the first day, it produced 
+  * 25 bbls of oil, 0 mcf of gas, and 5 bbls of water.  Similarly, well "11111111111112" produced 90 bbls oil, 5 mcf 
+  * gas, and 22 bbls water in its first day.
+  *
+  *
+  * A production summary contains one row per well with columns for various time interval production totals 
+  * (180, 360, 720, etc days). So an example of this structure might look like this:
+  *
+  * wellId, cum_oil_180, cum_oil_360, cum_oil_720
+  * 11111111111111, 3241, 7462, 21397
+  * 11111111111112, 5891, 11743, 25831
+  *
+  * Where this shows that well "11111111111111" produced 3241 bbls of oil over 180 producing days, 7462 bbls 
+  * over 360 producing days, and 21397 over 720 producing days.  Similar for well "11111111111112".
+  *
+  * Note that the output considers *producing* days, not calendar days.  So a calendar day from the well log 
+  * with 0 production would not count towards the 180 days (for example).  To illustrate, in the following 
+  * data set (some columns excluded for simplicity) there are 3 calendar days, but only 2 producing days for 
+  * oil (1 for gas, and 3 for water):
   *
   * wellId, date, oil, gas, water
   * 11111111111111, 2017-01-01, 25, 0, 5
