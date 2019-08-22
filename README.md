@@ -1,3 +1,5 @@
+[![Gitter](https://badges.gitter.im/OAG-Scala-Interview/community.svg)](https://gitter.im/OAG-Scala-Interview/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 # OAG Software Engineering Interview
 
 ## Background
@@ -9,6 +11,8 @@ a starting point so that we can get to know your programming style and approach 
 If you have found this repo and are not currently interviewing with us, you are welcome to give it a shot!  Fork the repo,
 implement your solution, and then send an email to jobs.dev@oaganalytics.com with your resume and a link to your fork.
 We'll be happy to follow up with you.
+
+If you have questions while working on the exercise, join our gitter room to get in contact with us.
 
 ## Goal
 
